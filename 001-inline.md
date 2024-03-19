@@ -54,6 +54,10 @@ public final void main() {
 由上面可以知道， inline 的本质：在编译时期，把调用这个函数的地方用这个函数的方法体进行替换。
 
 那么我们什么时候应该使用 inline 什么时候不应该使用呢？
+那么什么时候使用，什么时候不使用 inline 呢？
+
+不带参数，或是带有普通参数的函数，不建议使用 inline
+带有 lambda 函数参数的函数，建议使用 inline
 
 ## 2.1 不应该使用 inline 的情况
 当使用 inline 标注时，如果是下面这样，无参数的函数时：
@@ -113,12 +117,7 @@ fun foo(body:() -> Unit) {
     println("hahha233333")
 }
 ```
-## 2.3 inline 的使用规则
-那么什么时候使用，什么时候不使用 inline 呢？
-根据上面，我们大致可分为两种：
 
-不带参数，或是带有普通参数的函数，不建议使用 inline
-带有 lambda 函数参数的函数，建议使用 inline
 ## 2.3 inline 提高效率的原因
 
 为什么要使用 inline 呢？必然是因为使用 inline 会带来效率的提升。
@@ -219,8 +218,9 @@ class Demo(private val title: String) {
 为什么会有 noinline呢？为什么需要这种方式呢？
 
 官网中这么写着：如果希望只内联一部分传给内联函数的 lambda 表达式参数，那么可以用 noinline 修饰符标记不希望内联的函数参数, 代码如：
-
+```kotlin
 inline fun foo(inlined: () -> Unit, noinline notInlined: () -> Unit) { …… }
+```
 什么时候我们会需要 noinline 呢？
 例如代码：
 ```kotlin
