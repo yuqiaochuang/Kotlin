@@ -1,6 +1,0 @@
-apply，而不是
-对象进行修改，最后打印修改后的Person
-表达式的结果，和run函数很相似，
-表达式的参数，lambda
-值，如果是true
-kotlin协程的理解
